@@ -108,7 +108,7 @@ const Calculator: React.FC<CalculatorProps> = ({ fbaFee = 0, initialPrice = '0.0
           </div>
         </div>
       </div>
-    </div>
+     </div>
   );
 };
 

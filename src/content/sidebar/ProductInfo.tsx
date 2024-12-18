@@ -159,6 +159,7 @@ const ProductInfo: React.FC = () => {
             </div>
           </div>
         </div>
+
       </main>
     </div>
   );

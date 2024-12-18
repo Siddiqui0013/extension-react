@@ -32,7 +32,8 @@
   #amazon-product-sidebar {
     scroll-behavior: smooth;
   }
-  
+
+
   #info-section,
   #rank-price-section,
   #chart-section,
@@ -245,13 +246,15 @@
     border-radius: 20px;
     background: white;
     cursor: pointer;
+    text-decoration: none;
+    outline: none;
     transition: all 0.3s ease;
   }
   
   .product-basic {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 5px; */
     align-items: center;
     padding: 20px;
     text-align: center;

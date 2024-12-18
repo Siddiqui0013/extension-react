@@ -15,11 +15,11 @@ const Login: React.FC = () => {
       setError('');
       await login(email, password);
     } catch (error) {
-      setError('Invalid email or password');
+      setError('Invalid email or password' + error);
     }
   };
 
-  return (
+  return ( 
     <div className="login-container">
       <h2 className="login-title">Login</h2>
       
@@ -32,7 +32,7 @@ const Login: React.FC = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              
+               
             />
             <FiMail className="input-icon" />
           </div>
