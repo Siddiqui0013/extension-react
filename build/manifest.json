@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Amazon Seller Tool React",
+  "version": "1.0",
+  "description": "Fetch and display Amazon product data with tools and analytics.",
+  "action": {},
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.amazon.com/*"],
+      "css": ["assets/sidebar.css"],
+      "js": ["assets/contentScript.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "assets/background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["sidebar.html", "assets/*"],
+      "matches": ["https://www.amazon.com/*"]
+    }
+  ]
+}
