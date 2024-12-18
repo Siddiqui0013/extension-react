@@ -47,7 +47,6 @@ const Sidebar: React.FC = () => {
     }
   };
 
-
   const productInsightsContent = useMemo(() => (
 
     <div 
@@ -153,72 +152,3 @@ const Sidebar: React.FC = () => {
 
 export default Sidebar;
 
-
-
-
-  
-
-//   return (
-//     <div className="sidebar-content">
-//       <header className="header">
-//         <div className="dd">
-//           <button id="close-button" onClick={handleClose}>✕</button>
-//           <div className="header-icons" style={{ color: 'white'}}>
-//             {currentUser ? (
-//               <div className="user-menu">
-//                 <FaUser size={20} />
-//                 <div className="dropdown-content">
-//                   <p style={{ color: 'black' }}>Name: {currentUser?.displayName}</p> 
-//                   <p style={{ color: 'black' }}>Email: {currentUser?.email}</p>
-//                   <button 
-//                     style={{ 
-//                       backgroundColor: '#0E4DA4', 
-//                       color: 'white', 
-//                       border: 'none', 
-//                       cursor: 'pointer', 
-//                       padding: '5px 10px', 
-//                       borderRadius: '5px' 
-//                     }} 
-//                     onClick={handleLogout}
-//                   >
-//                     Logout
-//                   </button>
-//                 </div>
-//               </div>
-//             ) : (
-//               ""
-//             )}
-//           </div>
-//         </div>
-//       </header>
-
-//       {currentUser ? (
-//         <>
-//           <div className="nav-buttons">
-//             <button 
-//               className={`nav-btn ${activeSection === 'product-insights' ? 'active' : ''}`}
-//               onClick={() => setActiveSection('product-insights')}
-//             >
-//               Product Insights
-//             </button>
-//             <button 
-//               className={`nav-btn ${activeSection === 'seller-insights' ? 'active' : ''}`}
-//               onClick={() => setActiveSection('seller-insights')}
-//             >
-//               Seller Insights
-//             </button>
-//           </div>
-
-//           {productInsightsContent}
-//           {sellerInsightsContent}
-//         </>
-//       ) : (
-//         <div>
-//           <Login />
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Sidebar;
