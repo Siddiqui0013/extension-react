@@ -1,26 +1,44 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getAmazonProductData, AmazonProductData } from '../../utils/amazonScrapper';
-import { fetchKeepaData, KeepaProduct, getKeepaChartUrl } from '../../utils/fetchKeepaData';
+import { fetchKeepaData, KeepaProduct } from '../../utils/fetchKeepaData';
 
 import { FaGoogle, FaAmazon, FaDesktop, FaList } from "react-icons/fa";
 
-const ProductInfo: React.FC = () => {
+interface ProductInfoProps {
+  onFbaFeeChange: (fbaFee: number) => void;
+  onCostChange: (cost: number) => void;
+}
+const ProductInfo: React.FC<ProductInfoProps> = ({ onFbaFeeChange, onCostChange }) => {
   const [productData, setProductData] = useState<AmazonProductData | null>(null);
   const [keepaData, setKeepaData] = useState<KeepaProduct | null>(null);
+  const [fbaFee, setFbaFee] = useState(0);
+
+  const KEEPA_API_KEY = '2e327hvqq9m6q1umr6c2onbqr71pguhtum53drsopk60d5a9bdn68tu001fpoban';
 
   useEffect(() => {
     const fetchData = async () => {
       const amazonData = getAmazonProductData();
       setProductData(amazonData);
 
+      if (amazonData.price) {
+        const price = parseFloat(amazonData.price.replace('$', ''));
+        onCostChange(price);
+      }
+
       if (amazonData.asin) {
         const keepaProduct = await fetchKeepaData(amazonData.asin);
         setKeepaData(keepaProduct);
+
+        if (keepaProduct) {
+          const fee = parseFloat(String(keepaProduct.fbaFees.pickAndPackFee)) / 100;
+          setFbaFee(fee);
+          onFbaFeeChange(fee);
+        }
       }
     };
 
     fetchData();
-  }, []);
+  }, [ onFbaFeeChange, onCostChange ]);  
 
   const handleIconClick = (type: 'google' | 'amazon') => {
     if (!productData?.asin || !keepaData?.title) return;
@@ -41,7 +59,7 @@ const ProductInfo: React.FC = () => {
           </div>
           <div className="box">
             <p id="sidebar-title" style={{ textAlign: 'center', fontWeight: 'bold' }}>
-              {keepaData?.title ? keepaData.title.slice(0, 80) + "......" : 'Loading...'}
+              {keepaData?.title && keepaData.title.length > 80 ? keepaData.title.slice(0, 80) + "......" : keepaData?.title || 'Loading...'}
             </p>
           </div>
           <div className="box">
@@ -87,9 +105,7 @@ const ProductInfo: React.FC = () => {
             <div className="info-item">
               <div className="item-label">FBA fee</div>
               <div className="item-value" id="sidebar-fba">
-                {keepaData?.fbaFees ? 
-                  `${(parseFloat(String(keepaData.fbaFees.pickAndPackFee)) / 100).toFixed(2)} $` 
-                  : 'Not available'}
+                {fbaFee ? `$${fbaFee.toFixed(2)}` : 'Not available'}
               </div>
             </div>
 
@@ -151,7 +167,7 @@ const ProductInfo: React.FC = () => {
                     id="keepa-chart"
                     width="350"
                     height="200"
-                    src={getKeepaChartUrl(productData.asin)}
+                    src={ `https://api.keepa.com/graphimage?key=${KEEPA_API_KEY}&domain=1&width=350&height=250&asin=${productData.asin}`}
                     alt="Price History Chart"
                   />
                 )}
@@ -165,4 +181,4 @@ const ProductInfo: React.FC = () => {
   );
 };
 
-export default ProductInfo;
+export default ProductInfo; 

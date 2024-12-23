@@ -31,8 +31,7 @@ const Login: React.FC = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              required
-               
+              required       
             />
             <FiMail className="input-icon" />
           </div>
@@ -47,7 +46,7 @@ const Login: React.FC = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <div 
+            <div   
               className="password-toggle"
               onClick={() => setShowPassword(!showPassword)}
             >

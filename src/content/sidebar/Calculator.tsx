@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 
 interface CalculatorProps {
   fbaFee?: number;
-  initialPrice?: string;
+  cost?: number;
 }
 
-const Calculator: React.FC<CalculatorProps> = ({ fbaFee = 0, initialPrice = '0.00' }) => {
-  const [costPrice, setCostPrice] = useState('0.00');
-  const [salePrice, setSalePrice] = useState(initialPrice);
-  const [profit, setProfit] = useState('0.00');
+const Calculator: React.FC<CalculatorProps> = ({ fbaFee, cost }) => {
+  const [costPrice, setCostPrice] = useState('0');
+  const [salePrice, setSalePrice] = useState<number>(0);
+  const [profit, setProfit] = useState('0');
   const [roi, setRoi] = useState('0%');
   const [profitColor, setProfitColor] = useState('#00cc00');
 
@@ -20,10 +20,16 @@ const Calculator: React.FC<CalculatorProps> = ({ fbaFee = 0, initialPrice = '0.0
     return num < 0 || isNaN(num) ? 0 : num;
   };
 
+  useEffect(() => {
+    if (cost) {
+      setSalePrice(cost);
+    }
+  }, [cost]);
+
   const calculateProfitAndROI = () => {
     const cost = validatePositiveNumber(costPrice);
-    const sale = validatePositiveNumber(salePrice);
-    const calculatedProfit = sale - (cost + fbaFee);
+    const sale = validatePositiveNumber(salePrice ? salePrice.toString() : '0');
+    const calculatedProfit = sale - (cost + (fbaFee || 0));
     
     let calculatedRoi: string;
     if (cost > 0) {
@@ -39,7 +45,7 @@ const Calculator: React.FC<CalculatorProps> = ({ fbaFee = 0, initialPrice = '0.0
 
   useEffect(() => {
     calculateProfitAndROI();
-  }, [costPrice, salePrice, fbaFee]);
+  }, [costPrice, salePrice, fbaFee, cost]);
 
   const handleBlur = (value: string, setter: (value: string) => void) => {
     const formattedValue = parseFloat(value || '0').toFixed(2);
@@ -55,12 +61,12 @@ const Calculator: React.FC<CalculatorProps> = ({ fbaFee = 0, initialPrice = '0.0
           <div className="input-wrapper">
             <span className="currency">$</span>
             <input
-              type="number"
+              type=""
               value={costPrice}
               className="calc-input"
               onChange={(e) => setCostPrice(e.target.value)}
               onBlur={() => handleBlur(costPrice, setCostPrice)}
-              placeholder="0.00"
+              placeholder="0"
             />
           </div>
         </div>
@@ -73,9 +79,9 @@ const Calculator: React.FC<CalculatorProps> = ({ fbaFee = 0, initialPrice = '0.0
               type="number"
               value={salePrice}
               className="calc-input"
-              onChange={(e) => setSalePrice(e.target.value)}
+              onChange={(e) => setSalePrice(parseFloat(e.target.value))}
               onBlur={() => handleBlur(salePrice, setSalePrice)}
-              placeholder="0.00"
+              placeholder="0"
             />
           </div>
         </div>

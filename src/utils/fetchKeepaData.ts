@@ -19,7 +19,7 @@ export interface KeepaProduct {
   export const fetchKeepaData = async (asin: string): Promise<KeepaProduct | null> => {
     try {
       const response = await fetch(
-        `https://api.keepa.com/product?domain=1&key=${KEEPA_API_KEY}&asin=${asin}`
+        `https://api.keepa.com/product?key=${KEEPA_API_KEY}&domain=1&asin=${asin}`
       );
       
       if (!response.ok) {
@@ -37,8 +37,4 @@ export interface KeepaProduct {
       console.error('Error fetching Keepa data:', error);
       return null;
     }
-  };
-  
-  export const getKeepaChartUrl = (asin: string): string => {
-    return `https://api.keepa.com/graphimage?key=${KEEPA_API_KEY}&domain=1&width=350&height=250&asin=${asin}`;
   };

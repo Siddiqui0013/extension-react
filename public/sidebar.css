@@ -222,9 +222,30 @@
     border: none;
     color: white;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: bolder;
+  }
+
+  .logoutmodal, .settingsmodal {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   }
   
+  .parent-container1:hover .logoutmodal {
+    display: block;
+  }
+
+  .parent-container2:hover .settingsmodal {
+    display: block;
+  }
+
   section {
     scroll-margin-top: 50px;
   }
