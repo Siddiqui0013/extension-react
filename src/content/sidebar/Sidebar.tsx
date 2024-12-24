@@ -4,8 +4,10 @@ import Login from './Login';
 import Tabs from './Tabs';
 import ProductInfo from './ProductInfo';
 import Calculator from './Calculator';
+import Chart from './Chart';
 import { FaUser } from 'react-icons/fa';
 import { IoSettings, IoLogOut  } from "react-icons/io5";
+ 
 
 const Sidebar: React.FC = () => {
   const [activeSection, setActiveSection] = useState('product-insights');
@@ -74,15 +76,13 @@ const Sidebar: React.FC = () => {
         />
       </div>
 
+      <div ref={chartSectionRef} id="chart-section" className="section">
+        <Chart />
+        </div>
+
       <div ref={rankPriceSectionRef} id="rank-price-section" className="section">
         <div className="table-header2">Rank & Price</div>
         <div className="rank-price-content" style={{ height: '200px', background: 'blue', marginTop: '10px'}}>
-        </div>
-      </div>
-
-      <div ref={chartSectionRef} id="chart-section" className="section">
-        <div className="table-header3">Chart</div>
-        <div className="chart-content" style={{ height: '200px', background: 'green', marginTop: '10px'}}>
         </div>
       </div>
 
@@ -160,20 +160,6 @@ const Sidebar: React.FC = () => {
                     Seller Insights
                   </button>
                 </div>
-
-                {Object.entries(toggles).map(([key, value]) => (
-  <div key={key} className="toggle-item">
-    <label>{key}</label>
-    <span>{value ? "Enabled" : "Disabled"}</span>
-  </div>
-))} 
-
-                {Object.entries(settings).map(([key, value]) => (
-  <div key={key} className="setting-item">
-    <label>{key}</label>
-    <span>{value}</span>
-  </div>
-))}
 
                 {productInsightsContent}
                 {sellerInsightsContent}

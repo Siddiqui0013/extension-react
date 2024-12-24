@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getAmazonProductData, AmazonProductData } from '../../utils/amazonScrapper';
 import { fetchKeepaData, KeepaProduct } from '../../utils/fetchKeepaData';
-
 import { FaGoogle, FaAmazon, FaDesktop, FaList } from "react-icons/fa";
 
 interface ProductInfoProps {
@@ -13,8 +12,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ onFbaFeeChange, onCostChange 
   const [keepaData, setKeepaData] = useState<KeepaProduct | null>(null);
   const [fbaFee, setFbaFee] = useState(0);
 
-  const KEEPA_API_KEY = '2e327hvqq9m6q1umr6c2onbqr71pguhtum53drsopk60d5a9bdn68tu001fpoban';
-
+  
   useEffect(() => {
     const fetchData = async () => {
       const amazonData = getAmazonProductData();
@@ -152,25 +150,6 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ onFbaFeeChange, onCostChange 
                 {keepaData?.monthlySold ? 
                   `${keepaData.monthlySold} +` 
                   : 'Not available'}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div id="chart-section" className="tab-section">
-          <div className="chart-table">
-            <div className="table-header4">Chart</div>
-            <div className="chart-content">
-              <div className="chart-image">
-                {productData?.asin && (
-                  <img 
-                    id="keepa-chart"
-                    width="350"
-                    height="200"
-                    src={ `https://api.keepa.com/graphimage?key=${KEEPA_API_KEY}&domain=1&width=350&height=250&asin=${productData.asin}`}
-                    alt="Price History Chart"
-                  />
-                )}
               </div>
             </div>
           </div>

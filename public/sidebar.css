@@ -476,16 +476,25 @@
     color: #ff4444;
   }
   
-  
-  
-  
   .chart-table {
     width: 100%;
     overflow: hidden;
   }
   
   .chart-content {
-    padding: 1rem;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+  }
+
+  .chart-content h1{
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: underline;
   }
   
   .chart-header {
@@ -496,19 +505,19 @@
   }
   
   .chart-header h2 {
+    margin-top: 5px;
     font-weight: 600;
     font-size: 1rem;
   }
   
   .chart-image {
-    height: 200px;
     margin-bottom: 1rem;
     position: relative;
   }
   .logo {
     position: absolute;
     bottom: 0;
-    right: 2px;
+    right: 0;
     width: 80px;
     height: 80px;
     background-color: white;
