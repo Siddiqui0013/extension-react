@@ -11,7 +11,7 @@ export default function Chart() {
     showSalesChart: false,
     showPricesChart : false,
     showBBChart : false,
-  });
+  }); 
   
 
     useEffect(() => {

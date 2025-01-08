@@ -18,22 +18,6 @@
   }
 
 
-
-
-
-  html, body {
-    scroll-behavior: smooth;
-  }
-  
-  .sidebar-content {
-    scroll-behavior: smooth;
-  }
-  
-  #amazon-product-sidebar {
-    scroll-behavior: smooth;
-  }
-
-
   #info-section,
   #rank-price-section,
   #chart-section,
@@ -194,15 +178,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px;
     background: #0E4DA4;
     z-index: 10;
-  }
-  .dd {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
   }
   
   .header-icons {

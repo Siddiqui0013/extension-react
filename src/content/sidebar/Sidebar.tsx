@@ -64,7 +64,7 @@ const Sidebar: React.FC = () => {
       className="product-insights-content"
       style={{ 
         display: activeSection === 'product-insights' ? 'block' : 'none',
-        height: 'calc(100vh - 100px)',
+        height: 'auto',
       }}
     >
       <Tabs activeTab={activeTab} onTabChange={handleTabChange} />
@@ -117,7 +117,6 @@ const Sidebar: React.FC = () => {
       { loading ? (<div>Loading...</div>) : !currentUser ? ( <Login/> ) : (
             <div className="box">
             <header className="header">
-              <div className="dd">
                 <button id="close-button" onClick={handleClose}>✕</button>
                 <div className="header-icons">
                   {currentUser && (
@@ -143,7 +142,6 @@ const Sidebar: React.FC = () => {
                     </>
                   )}
                 </div>
-              </div>
             </header>
 
                 <div className="nav-buttons">
