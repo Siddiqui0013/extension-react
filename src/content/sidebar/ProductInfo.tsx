@@ -21,7 +21,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ onFbaFeeChange, onCostChange 
       if (amazonData.price) {
         const price = parseFloat(amazonData.price.replace('$', ''));
         onCostChange(price);
-      }
+      } 
 
       if (amazonData.asin) {
         const keepaProduct = await fetchKeepaData(amazonData.asin);

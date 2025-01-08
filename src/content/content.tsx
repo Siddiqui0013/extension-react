@@ -41,17 +41,44 @@ closeBtn?.addEventListener('click', () => {
   }
 })
 
+const sliderIcon = document.createElement('div');
+Object.assign(sliderIcon.style, {
+  padding: '20px',
+  cursor: 'pointer',
+  backgroundColor: 'blue',
+  color: 'white',
+  fontSize: '20px',
+  borderRadius: '50%',
+  position: 'fixed',
+  right: '0',
+  top: '100px',
+  zIndex: '9999',
+  transition: 'transform 0.3s ease-in-out, right 0.3s ease-in-out'
+});
+sliderIcon.innerHTML = 'AST';
+
+document.body.appendChild(sliderIcon);
+
+sliderIcon.addEventListener('click', () => {
+  const sidebar = document.getElementById('amazon-seller-sidebar-root');
+  if (sidebar) {
+    sidebar.style.display = sidebar.style.display === 'none' ? 'block' : 'none';
+  }
+});
+
 chrome.runtime.onMessage.addListener((message) => {
   if (message.action === 'toggleSidebar') {
     const sidebar = document.getElementById('amazon-seller-sidebar-root');
     if (sidebar) {
-      sidebar.style.display = 
-        sidebar.style.display === 'none' ? 'block' : 'none';
+        sidebar.style.display = sidebar.style.display === 'none' ? 'block' : 'none';
+        sliderIcon.style.display = sidebar.style.display === 'none' ? 'block' : 'none';
     } else {
       injectSidebar();
     }
   }
 });
+
+
 
 if (window.location.pathname.includes('/dp/')) {
   if (document.readyState === 'loading') {
