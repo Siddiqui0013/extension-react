@@ -20,11 +20,12 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, onTabChange }) => {
   };
 
   return (
-    <nav className="tab-navigation" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '3px' }}>
+    <nav className="tab-navigation" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1px' }}>
       {tabs.map(tab => (
         <a key={tab.id}
           href={`#${tab.id}`}
           className={`tab-button ${activeTab === tab.id ? 'active' : ''}`}
+          style={{ color: 'var(--secondary)' }}
           onClick={(e) => {
             e.preventDefault();
             handleTabClick(tab.id);

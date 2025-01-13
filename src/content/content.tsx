@@ -3,6 +3,9 @@ import { createRoot } from 'react-dom/client';
 import Sidebar from './sidebar/Sidebar';
 import { AuthProvider } from '../context/AuthContext';
 
+// primary: '#5ABDF5',
+// secondary: '#187AA9',
+
 const injectSidebar = () => {
   let container = document.getElementById('amazon-seller-sidebar-root');
   

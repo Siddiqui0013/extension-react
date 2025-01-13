@@ -119,7 +119,8 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ onFbaFeeChange, onCostChange 
               <div className="item-value" id="sidebar-brand">
                 {keepaData?.brand || 'Not available'}
               </div>
-            </div>
+            </div>  
+            
 
             <div className="info-item">
               <div className="item-label">Model</div>

@@ -1,3 +1,8 @@
+:root{
+--primary: #5ABDF5;
+--secondary: #187AA9,
+}
+
 #amazon-seller-sidebar-root {
   position: fixed;
   right: 0;
@@ -74,7 +79,7 @@
   
   .input-wrapper input:focus {
     outline: none;
-    border-color: #4C1D95;
+    border-color: var(--secondary);
   }
   
   .input-icon,
@@ -86,7 +91,7 @@
   }
   
   .login-button {
-    background-color: #0E4DA4;
+    background-color: var(--primary);
     color: white;
     padding: 12px;
     border: none;
@@ -109,7 +114,7 @@
   }
   
   .help-link {
-    color: #0E4DA4;
+    color: var(--primary);
     text-decoration: none;
   }
   .user-menu {
@@ -151,7 +156,7 @@
   }
   
   .nav-btn.active {
-    background: #0E4DA4;
+    background: var(--primary);
     color: white;
   }
   
@@ -179,7 +184,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background: #0E4DA4;
+    background: var(--primary);
     z-index: 10;
   }
   
@@ -234,9 +239,9 @@
   }
   
   .tab-button.active {
-    background: #0E4DA4;
+    background: var(--primary);
     color: white;
-    border-color: #0E4DA4;
+    border-color: var(--primary);
   }
   
   .tab-button {
@@ -261,7 +266,7 @@
   
   .product-title {
     font-size: 24px;
-    color: #0E4DA4;
+    color: var(--primary);
     margin: 8px 0;
   }
   
@@ -275,7 +280,7 @@
   .icon-circle {
     width: 30px;
     height: 30px;
-    background-color: #0E4DA4;
+    background-color: var(--primary);
     color: white;
     border-radius: 10%;
     display: flex;
@@ -296,12 +301,12 @@
   
   .table-header1, .table-header2, .table-header3, .table-header4, .table-header5, .table-header6 {
     background-color: #D9D9D9;
-    border-top: 1px solid #0E4DA4;
-    border-bottom: 1px solid #0E4DA4;
+    border-top: 1px solid var(--primary);
+    border-bottom: 1px solid var(--primary);
     padding: 0.5rem;
     text-align: center;
     font-weight: 500;
-    color: #0E4DA4;
+    color: var(--primary);
   }
   
   .rank-price-table {

@@ -37,14 +37,14 @@ const Sidebar: React.FC = () => {
 		}
 	};
 
-	const infoSectionRef = useRef(null);
-	const rankPriceSectionRef = useRef(null);
-	const chartSectionRef = useRef(null);
-	const calculatorSectionRef = useRef(null);
-	const handleTabChange = (tabId: string) => {
+	const infoSectionRef = useRef<HTMLDivElement>(null);
+	const rankPriceSectionRef = useRef<HTMLDivElement>(null);
+	const chartSectionRef = useRef<HTMLDivElement>(null);
+	const calculatorSectionRef = useRef<HTMLDivElement>(null);
+	const handleTabChange = (tabId: "info-section" | "rank-price-section" | "chart-section" | "calculator-section") => {
 		setActiveTab(tabId);
 
-		const refMap = {
+		const refMap: { [key in "info-section" | "rank-price-section" | "chart-section" | "calculator-section"]: React.MutableRefObject<HTMLDivElement | null> } = {
 			"info-section": infoSectionRef,
 			"rank-price-section": rankPriceSectionRef,
 			"chart-section": chartSectionRef,
@@ -130,7 +130,7 @@ const Sidebar: React.FC = () => {
 				<div>Loading...</div>
 			) : !currentUser ? (
 				<Login />
-			) : (
+			) : ( 
 				<div className="box">
 					<header className="header">
 						<button id="close-button" onClick={handleClose}>
